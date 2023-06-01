@@ -19,7 +19,10 @@ app.use((err, req, res, next) => {
 
 //path not found
 app.use((req, res) => {
-  res.status(404).send({});
+  res.status(404).send({
+    status: 'error',
+    message: 'Ruta no encontrada',
+  });
 });
 
 app.listen(process.env.PORT, () => {

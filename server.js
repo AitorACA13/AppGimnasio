@@ -5,7 +5,16 @@ const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 const cors = require('cors');
 
+const userRoutes = require('./src/routes/userRoutes');
+
 const app = express();
+
+app.use(express.json());
+app.use(morgan('dev'));
+app.use(cors());
+
+//middleware que indica a express donde se encuentran las rutas de usuarios
+app.use(userRoutes);
 
 //_____________ MIDDLEWARES DE ERROR ____________________
 //error middleware

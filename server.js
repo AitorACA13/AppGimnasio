@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const app = express();
 
+//_____________ MIDDLEWARES DE ERROR ____________________
 //error middleware
 app.use((err, req, res, next) => {
   console.error(err);

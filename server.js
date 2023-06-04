@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 
+
 // Creamos el servidor.
 const app = express();
 
@@ -46,6 +47,7 @@ app.post('/users', newUser);
  */
 
 // Middleware de error.
+
 app.use((err, req, res, next) => {
   console.error(err);
 

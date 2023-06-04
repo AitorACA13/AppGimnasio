@@ -1,3 +1,4 @@
+
 const mysql = require('mysql2/promise');
 
 // Obtenemos las variables de entorno necesarias.
@@ -20,10 +21,14 @@ const getDB = async () => {
         database: MYSQL_DB,
         timezone: 'Z',
       });
+
     }
 
     // Retornamos una conexión libre.
     return await pool.getConnection();
+
+    }
+
   } catch (err) {
     console.error(err);
   }

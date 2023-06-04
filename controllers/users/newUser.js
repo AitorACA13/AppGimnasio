@@ -1,3 +1,4 @@
+
 //insertNewUserQuery
 const insertNewUserQuery = require('../../db/queries/users/insertUserQuery');
 

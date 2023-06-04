@@ -63,7 +63,7 @@ createdAt
 
 - POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.✅
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
-- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. **DOMINGO**
+- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser.✅
 - PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **DOMINGO**
 - GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)**DOMINGO**
 - PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token **DOMINGO**

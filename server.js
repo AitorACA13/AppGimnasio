@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 
-
 // Creamos el servidor.
 const app = express();
 
@@ -25,13 +24,13 @@ app.use(morgan('dev'));
  * ##########################
  */
 
-const { newUser } = require('./controllers/users');
+const { newUser, loginUser } = require('./controllers/users');
 
 // Registro de usuario pendiente de validar.
 app.post('/users', newUser);
 
 // Login usuario >POST
-
+app.post('/users/login', loginUser);
 // Info usuario > GET
 
 //Info usuario logueado >GET

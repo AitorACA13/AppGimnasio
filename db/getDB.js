@@ -1,17 +1,18 @@
-'use strict';
 
 const mysql = require('mysql2/promise');
 
-//Obtenemos las variables de entorno
+// Obtenemos las variables de entorno necesarias.
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB } = process.env;
 
-//Variable que almacena grupo de conexiones.
+// Variable que almacenará un grupo de conexiones.
 let pool;
 
-//Función que retorna conexión libre con la base de datos.
+// Función que retorna una conexión libre con la base de datos.
 const getDB = async () => {
   try {
+    // Si la variable pool está vacía...
     if (!pool) {
+      // Creamos un grupo de conexiones.
       pool = mysql.createPool({
         connectionLimit: 10,
         host: MYSQL_HOST,
@@ -20,8 +21,14 @@ const getDB = async () => {
         database: MYSQL_DB,
         timezone: 'Z',
       });
-      return await pool.getConnection();
+
     }
+
+    // Retornamos una conexión libre.
+    return await pool.getConnection();
+
+    }
+
   } catch (err) {
     console.error(err);
   }

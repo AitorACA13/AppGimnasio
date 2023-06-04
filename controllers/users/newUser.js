@@ -1,22 +1,30 @@
+
+//insertNewUserQuery
+const insertNewUserQuery = require('../../db/queries/users/insertUserQuery');
+
 const { generateError } = require('../../helpers');
-const insertUserQuery = require('../../src/models/users/insertUserQuery');
-const newUserSchema = require('../../src/schemas/newUserSchema');
-const validateSchema = require('../../src/schemas/validateSchema');
+//newUser controller
 const newUser = async (req, res, next) => {
   try {
+    //Obtener name, email & password del body
     const { name, email, password } = req.body;
+
+    //Check de campos requeridos
     if (!name || !email || !password) {
       generateError('Faltan campos', 400);
     }
-    await validateSchema(newUserSchema, req.body);
-    await insertUserQuery(name, email, password);
+
+    //Si el check es correcto, query para insertar newUser en DB
+    await insertNewUserQuery(name, email, password);
+
+    //response
     res.send({
       status: 'ok',
-      msg: 'Usuario creado',
+      message: `Hola ${name}, tu usuario se ha creado correctamente`,
     });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
-module.export = newUser;
+module.exports = newUser;

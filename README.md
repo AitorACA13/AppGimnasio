@@ -59,10 +59,20 @@ createdAt
 
 ## Users Endpoints:
 
+
+
+- POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.✅
+- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
+- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. **DOMINGO**
+- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **DOMINGO**
+- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)**DOMINGO**
+- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token **DOMINGO**
+
 - POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
 - POST - ['/users/login'] ▶️ Logea a un usuario retornando un token.
 - GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)
+
 
 ## Exercises:
 
@@ -82,8 +92,8 @@ Si nos da tiempo:
 
 # bonus track
 
+
 - PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<<
-- PUT - ['/users/password'] - Resetea la contraseña de un usuario utilizando un código de recuperación. >regis
 - PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis
 - DELETE - ['/users/:userId] - Eliminar a un usuario - el admin

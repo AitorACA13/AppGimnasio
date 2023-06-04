@@ -1,23 +1,53 @@
 require('dotenv').config();
 
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
-const cors = require('cors');
 
-const userRoutes = require('./src/routes/userRoutes');
 
+// Creamos el servidor.
 const app = express();
 
+/**
+ * #############################
+ * ## Middlewares funcionales ##
+ * #############################
+ */
+
+// Middleware que deserializa un body en formato raw creando la propiedad body
 app.use(express.json());
+
+// Middleware que muestra información sobre la petición entrante
 app.use(morgan('dev'));
-app.use(cors());
 
-//middleware que indica a express donde se encuentran las rutas de usuarios
-app.use(userRoutes);
+/**
+ * ##########################
+ * ## Middlewares usuarios ##
+ * ##########################
+ */
 
-//_____________ MIDDLEWARES DE ERROR ____________________
-//error middleware
+const { newUser } = require('./controllers/users');
+
+// Registro de usuario pendiente de validar.
+app.post('/users', newUser);
+
+// Login usuario >POST
+
+// Info usuario > GET
+
+//Info usuario logueado >GET
+
+//Editar contraseña>PUT
+
+//**extras**>Eliminar usuario (solo admin):DELETE & Editar usuario:PUT
+
+/**
+ * ################################################
+ * ## Middlewares Control Errors & Server Listen ##
+ * ################################################
+ */
+
+// Middleware de error.
+
 app.use((err, req, res, next) => {
   console.error(err);
 
@@ -27,7 +57,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-//path not found
+// Middleware de ruta no encontrada.
 app.use((req, res) => {
   res.status(404).send({
     status: 'error',
@@ -35,6 +65,7 @@ app.use((req, res) => {
   });
 });
 
+// Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at http://localhost:${process.env.PORT}`);
 });

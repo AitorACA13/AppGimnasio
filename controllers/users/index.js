@@ -1,5 +1,7 @@
 const newUser = require('./newUser');
 
-module.export = {
+
+module.exports = {
+=======
   newUser,
 };

@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 require('dotenv').config();
@@ -14,12 +12,12 @@ const main = async () => {
 
     // await connection.query(`DROP DATABASE IF EXISTS gymñam`);
 
-    /*     await connection.query(`DROP TABLE IF EXISTS favourites`);
+    await connection.query(`DROP TABLE IF EXISTS favourites`);
     await connection.query(`DROP TABLE IF EXISTS likes`);
     await connection.query(`DROP TABLE IF EXISTS muscleGroup`);
     await connection.query(`DROP TABLE IF EXISTS typologys`);
     await connection.query(`DROP TABLE IF EXISTS exercises`);
-    await connection.query(`DROP TABLE IF EXISTS users `); */
+    await connection.query(`DROP TABLE IF EXISTS users `);
 
     console.log('Creando tablas...');
 
@@ -28,7 +26,7 @@ const main = async () => {
     CREATE TABLE IF NOT EXISTS users(
 
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT ,
-        name VARCHAR (30) UNIQUE NOT NULL ,
+        name VARCHAR (30) NOT NULL ,
         email VARCHAR(100) UNIQUE NOT NULL , 
         password VARCHAR(100) NOT NULL,
         -- registrationCode POR SI ACASO QUEREMOS IMPLEMENTARLO, 

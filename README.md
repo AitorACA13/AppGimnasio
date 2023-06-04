@@ -59,20 +59,11 @@ createdAt
 
 ## Users Endpoints:
 
-
-
 - POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.✅
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
 - POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser.✅
-- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **DOMINGO**
-- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)**DOMINGO**
-- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token **DOMINGO**
-
-- POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.
-- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
-- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token.
+- GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario)**DOMINGO** ✅
 - GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)
-
 
 ## Exercises:
 
@@ -92,7 +83,7 @@ Si nos da tiempo:
 
 # bonus track
 
-
+- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **DOMINGO**
 - PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<<
 - PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis

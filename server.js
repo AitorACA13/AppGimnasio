@@ -24,20 +24,29 @@ app.use(morgan('dev'));
  * ##########################
  */
 
-const { newUser, loginUser } = require('./controllers/users');
-
+const { newUser, loginUser, getUser } = require('./controllers/users');
 // Registro de usuario pendiente de validar.
 app.post('/users', newUser);
 
 // Login usuario >POST
 app.post('/users/login', loginUser);
 // Info usuario > GET
-
+app.get('/users/:userId', getUser);
 //Info usuario logueado >GET
 
 //Editar contraseña>PUT
 
 //**extras**>Eliminar usuario (solo admin):DELETE & Editar usuario:PUT
+
+/**
+ * ##########################
+ * ## Middlewares personalizados ##
+ * ##########################
+ */
+const authUser = require('./middlewares/authUser');
+const userExists = require('./middlewares/userExists');
+const authUserOptional = require('./middlewares/authUserOptional');
+app.get('/users', authUser, userExists, authUserOptional);
 
 /**
  * ################################################

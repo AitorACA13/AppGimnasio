@@ -1,4 +1,3 @@
-
 'use strict';
 
 const fs = require('fs/promises');
@@ -10,14 +9,11 @@ const path = require('path');
  * ####################
  */
 
-=======
-
 const generateError = (msg, code) => {
   const err = new Error(msg);
   err.httpStatus = code;
   throw err;
 };
-
 
 /**
  * #####################

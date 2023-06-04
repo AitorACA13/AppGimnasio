@@ -1,6 +1,5 @@
-
 //insertNewUserQuery
-const insertNewUserQuery = require('../../db/queries/users/insertUserQuery');
+const insertUserQuery = require('../../db/queries/users/insertUserQuery');
 
 const { generateError } = require('../../helpers');
 //newUser controller
@@ -15,7 +14,7 @@ const newUser = async (req, res, next) => {
     }
 
     //Si el check es correcto, query para insertar newUser en DB
-    await insertNewUserQuery(name, email, password);
+    await insertUserQuery(name, email, password);
 
     //response
     res.send({

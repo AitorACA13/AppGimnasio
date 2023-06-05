@@ -24,7 +24,12 @@ app.use(morgan('dev'));
  * ##########################
  */
 
-const { newUser, loginUser, getUser } = require('./controllers/users');
+const {
+  newUser,
+  loginUser,
+  getUser,
+  getOwnUser,
+} = require('./controllers/users');
 // Registro de usuario pendiente de validar.
 app.post('/users', newUser);
 
@@ -45,8 +50,8 @@ app.get('/users/:userId', getUser);
  */
 const authUser = require('./middlewares/authUser');
 const userExists = require('./middlewares/userExists');
-const authUserOptional = require('./middlewares/authUserOptional');
-app.get('/users', authUser, userExists, authUserOptional);
+
+app.get('/users', authUser, userExists, getOwnUser);
 
 /**
  * ################################################

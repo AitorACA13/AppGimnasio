@@ -63,7 +63,7 @@ createdAt
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
 - POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser.✅
 - GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario)**DOMINGO** ✅
-- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)
+- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)✅
 
 ## Exercises:
 

@@ -4,8 +4,8 @@ const { generateError } = require('../../helpers');
 
 const getUser = async (req, res, next) => {
   try {
-    const { userId, name } = req.params;
-    const user = await selectUserByIdQuery(userId, name);
+    const { userId, name, role } = req.params;
+    const user = await selectUserByIdQuery(userId, name, role);
     if (!user) {
       generateError('Usuario no encontrado.', 404);
     }

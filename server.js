@@ -42,7 +42,6 @@ app.get('/users/:userId', getUser);
 //Editar contraseña>PUT
 
 //**extras**>Eliminar usuario (solo admin):DELETE & Editar usuario:PUT
-
 /**
  * ##########################
  * ## Middlewares personalizados ##
@@ -52,6 +51,15 @@ const authUser = require('./middlewares/authUser');
 const userExists = require('./middlewares/userExists');
 
 app.get('/users', authUser, userExists, getOwnUser);
+
+/**
+ * ###########################
+ * ## Middlewares Exercises ##
+ * ###########################
+ */
+const { newExercises } = require('./controllers/exercises');
+//Nuevo ejercicio
+app.post('/exercises', newExercises, authUser);
 
 /**
  * ################################################

@@ -67,17 +67,20 @@ createdAt
 
 ## Exercises:
 
+## Usuario Admin
+
 - POST ['/exercises'] ▶️ Registro de un nuevo ejercicio/entrenamiento Token
-- GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios
 - GET ['/exercises/:exercisesId']▶️ Devuelve info de un ejercicio en concreto Token
 - PUT ['/exercises/:exercisesId'] ▶️ Modificar ejercicio. Token
 - DELETE ['/exercises/:exercisesId'] ▶️ Eliminar ejercicio. Token
+
+## Usuario normal
+
 - POST ['/exercises/:exerciseId/likes'] Dar like
 - DELETE ['/exercises/:exerciseId/likes'] Eliminar like
 - POST ['/exercises/:exerciseId/favorites'] Anade un ejercicio a la lista favoritos
 - DELETE ['/exercises/:exerciseId/favorites'] Eliminar un ejercicio a la lista favoritos
-
-# Usuario registrado:
+- GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios
 
 Si nos da tiempo:
 

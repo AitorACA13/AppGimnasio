@@ -5,7 +5,7 @@ const path = require('path');
 const sharp = require('sharp');
 const { v4: uuid } = require('uuid');
 const { UPLOADS_DIR } = process.env;
-
+console.log(UPLOADS_DIR);
 /**
  * ####################
  * ## Generate Error ##
@@ -41,6 +41,7 @@ const savePhoto = async (img, width) => {
   try {
     //ruta absoluta al directorio de subida de archivos
     const uploadsPath = path.join(__dirname, UPLOADS_DIR);
+
     //Accedemos a la ruta
     try {
       await fs.access(uploadsPath);
@@ -57,7 +58,7 @@ const savePhoto = async (img, width) => {
     // Ruta absoluta a la imagen.
     const imgPath = path.join(uploadsPath, imgName);
     //Guardamos la imagen.
-    sharpImg.toFile(imgPath);
+    await sharpImg.toFile(imgPath);
     //Retornamos el nombre de la imagen.
     return imgName;
   } catch (err) {

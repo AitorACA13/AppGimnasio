@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
 // Creamos el servidor.
@@ -14,6 +15,9 @@ const app = express();
 
 // Middleware que deserializa un body en formato raw creando la propiedad body
 app.use(express.json());
+
+// Middleware que deserializa un body en formato form data creando la propiedad body y la propiedad files.
+app.use(fileUpload());
 
 // Middleware que muestra información sobre la petición entrante
 app.use(morgan('dev'));
@@ -49,7 +53,7 @@ app.get('/users/:userId', getUser);
  */
 const authUser = require('./middlewares/authUser');
 const userExists = require('./middlewares/userExists');
-
+const isAdmin = require('./middlewares/isAdmin');
 app.get('/users', authUser, userExists, getOwnUser);
 
 /**
@@ -59,7 +63,8 @@ app.get('/users', authUser, userExists, getOwnUser);
  */
 const { newExercises } = require('./controllers/exercises');
 //Nuevo ejercicio
-app.post('/exercises', newExercises, authUser);
+app.post('/exercises', authUser, userExists, isAdmin, newExercises);
+//mejor singular.
 
 /**
  * ################################################

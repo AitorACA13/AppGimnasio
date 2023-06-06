@@ -69,8 +69,8 @@ createdAt
 
 ## Usuario Admin
 
-- POST ['/exercises'] ▶️ Registro de un nuevo ejercicio/entrenamiento Token
-- GET ['/exercises/:exercisesId']▶️ Devuelve info de un ejercicio en concreto Token
+- POST ['/exercises'] ▶️ Registro de un nuevo ejercicio/entrenamiento Token ✅
+- GET ['/exercises/:exercisesId']▶️ Devuelve info de un ejercicio en concreto Token ✅
 - PUT ['/exercises/:exercisesId'] ▶️ Modificar ejercicio. Token
 - DELETE ['/exercises/:exercisesId'] ▶️ Eliminar ejercicio. Token
 

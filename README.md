@@ -62,7 +62,7 @@ createdAt
 - POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.✅
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
 - POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser.✅
-- GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario)**DOMINGO** ✅
+- GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario)✅
 - GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)✅
 
 ## Exercises:
@@ -70,9 +70,9 @@ createdAt
 ## Usuario Admin
 
 - POST ['/exercises'] ▶️ Registro de un nuevo ejercicio/entrenamiento Token ✅
-- GET ['/exercises/:exercisesId']▶️ Devuelve info de un ejercicio en concreto Token ✅
-- PUT ['/exercises/:exercisesId'] ▶️ Modificar ejercicio. Token
-- DELETE ['/exercises/:exercisesId'] ▶️ Eliminar ejercicio. Token
+- GET ['/exercises/:exerciseId']▶️ Devuelve info de un ejercicio en concreto Token ✅
+- PUT ['/exercises/:exerciseId'] ▶️ Modificar ejercicio. Token ✅
+- DELETE ['/exercises/:exerciseId'] ▶️ Eliminar ejercicio. Token ✅
 
 ## Usuario normal
 

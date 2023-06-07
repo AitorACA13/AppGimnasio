@@ -79,6 +79,7 @@ const modifyExercise = async (req, res, next) => {
           description,
           typologyId,
           muscleGroupId,
+          modifiedAt: new Date(),
           photo: imgNameExercise,
         },
       },

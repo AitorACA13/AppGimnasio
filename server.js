@@ -67,6 +67,7 @@ const {
   newExercises,
   getExercise,
   modifyExercise,
+  deleteExercise,
 } = require('./controllers/exercises');
 
 //Nuevo ejercicio
@@ -74,10 +75,13 @@ app.post('/exercises', authUser, userExists, isAdmin, newExercises);
 //mejor singular.
 
 //Obtenemos información de un ejercicio en concreto.
-app.get('/exercises/:id', getExercise);
+app.get('/exercises/:id', authUser, getExercise);
 
 // Modificamos el ejercicio
-app.put('/exercises/:id', authUser, exerciseExists, modifyExercise);
+app.put('/exercises/:id', authUser, isAdmin, exerciseExists, modifyExercise);
+
+//Eliminar ejercicio
+app.delete('/exercises/:id', authUser, isAdmin, exerciseExists, deleteExercise);
 
 /**
  * ################################################

@@ -54,6 +54,8 @@ app.get('/users/:userId', getUser);
 const authUser = require('./middlewares/authUser');
 const userExists = require('./middlewares/userExists');
 const isAdmin = require('./middlewares/isAdmin');
+const exerciseExists = require('./middlewares/exerciseExists');
+
 app.get('/users', authUser, userExists, getOwnUser);
 
 /**
@@ -66,15 +68,16 @@ const {
   getExercise,
   modifyExercise,
 } = require('./controllers/exercises');
+
 //Nuevo ejercicio
 app.post('/exercises', authUser, userExists, isAdmin, newExercises);
 //mejor singular.
 
 //Obtenemos información de un ejercicio en concreto.
-app.get('/exercises/:exerciseId', getExercise);
+app.get('/exercises/:id', getExercise);
 
 // Modificamos el ejercicio
-app.put('/exercises/:exerciseId', authUser, isAdmin, modifyExercise);
+app.put('/exercises/:id', authUser, exerciseExists, modifyExercise);
 
 /**
  * ################################################

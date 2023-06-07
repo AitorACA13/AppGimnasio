@@ -7,17 +7,18 @@ const main = async () => {
   let connection;
   try {
     connection = await getDB();
+
     console.log('Borrando tablas del gym');
     // %%%%%%%%%%%%%  FALTA COLOCAR LAS FOREIGN KEY EN LAS TABLAS  %%%%%%%%%%%%%%%%%%%
 
-    // await connection.query(`DROP DATABASE IF EXISTS gymñam`);
+    //await connection.query(`DROP DATABASE IF EXISTS gymñam`);
 
     await connection.query(`DROP TABLE IF EXISTS favourites`);
     await connection.query(`DROP TABLE IF EXISTS likes`);
     await connection.query(`DROP TABLE IF EXISTS exercises`);
     await connection.query(`DROP TABLE IF EXISTS muscleGroups`);
     await connection.query(`DROP TABLE IF EXISTS typologys`);
-    await connection.query(`DROP TABLE IF EXISTS users `);
+    await connection.query(`DROP TABLE IF EXISTS users`);
 
     console.log('Creando tablas...');
 
@@ -103,9 +104,10 @@ const main = async () => {
 
     //Encriptar la contraseña del admin
     const hashedPass = await bcrypt.hash('1234567', 10);
+
     //Crear un usuario de administrador.
     await connection.query(
-      `INSERT INTO users (name, email, password, role , createdAt) VALUES('admin', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
+      `INSERT INTO users (name, email, password, role , createdAt) VALUES('Marina', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
       [new Date()]
     );
 

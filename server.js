@@ -68,6 +68,8 @@ const {
   getExercise,
   modifyExercise,
   deleteExercise,
+  addLike,
+  deleteLike,
 } = require('./controllers/exercises');
 
 //Nuevo ejercicio
@@ -82,6 +84,18 @@ app.put('/exercises/:id', authUser, isAdmin, exerciseExists, modifyExercise);
 
 //Eliminar ejercicio
 app.delete('/exercises/:id', authUser, isAdmin, exerciseExists, deleteExercise);
+
+/**
+ * ##################################
+ * ## Middlewares Exercises-LIKES- ##
+ * ##################################
+ */
+
+//Add like
+app.post('/exercises/:id/likes', authUser, exerciseExists, addLike);
+
+//Eliminar Like
+app.delete('/exercises/:id/likes', authUser, exerciseExists, deleteLike);
 
 /**
  * ################################################

@@ -76,17 +76,17 @@ createdAt
 
 ## Usuario normal
 
-- POST ['/exercises/:exerciseId/likes'] Dar like
-- DELETE ['/exercises/:exerciseId/likes'] Eliminar like
-- POST ['/exercises/:exerciseId/favorites'] Anade un ejercicio a la lista favoritos
-- DELETE ['/exercises/:exerciseId/favorites'] Eliminar un ejercicio a la lista favoritos
-- GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios
+- POST ['/exercises/:exerciseId/likes'] Dar like ✅
+- DELETE ['/exercises/:exerciseId/likes'] Eliminar like ✅
+- GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios **JUEVES**
+- POST ['/exercises/:exerciseId/favorites/:userid'] Anade un ejercicio a la lista favoritos **JUEV/VIERNES**
+- DELETE ['/exercises/:exerciseId/favorites/:userId'] Eliminar un ejercicio a la lista favoritos jueves **JUEV/VIERNES**
 
 Si nos da tiempo:
 
 # bonus track
 
-- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **DOMINGO**
+- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token 
 - PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<<
 - PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis

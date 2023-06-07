@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Marina\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"123456A\"\n}",
+					"raw": "{\n    \"name\": \"Marina\",\n    \"email\": \"normal@gmail.com\",\n    \"password\": \"123456A\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"email\": \"admin@gmail.com\",\n    \"password\": \"1234567\"\n}",
+					"raw": "{\n\"name\": \"Marina\",\n    \"email\": \"normal@gmail.com\",\n    \"password\": \"123456A\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -80,7 +80,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/users/1",
+					"raw": "http://localhost:8000/users/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -88,7 +88,7 @@
 					"port": "8000",
 					"path": [
 						"users",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -104,7 +104,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_12}}",
+						"value": "{{token_user_normal}}",
 						"type": "text"
 					}
 				],
@@ -118,14 +118,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/users",
+					"raw": "http://localhost:8000/users/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"users"
+						"users",
+						"2"
 					]
 				}
 			},
@@ -140,6 +141,11 @@
 						"key": "Authorization",
 						"value": "{{token_user_admin}}",
 						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -147,22 +153,22 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Ej2",
+							"value": "Pruebaequipo",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "Xxsdxxxs",
+							"value": "asfa",
 							"type": "text"
 						},
 						{
 							"key": "typologyId",
-							"value": "2",
+							"value": "1",
 							"type": "text"
 						},
 						{
 							"key": "muscleGroupId",
-							"value": "1",
+							"value": "2",
 							"type": "text"
 						},
 						{
@@ -190,9 +196,15 @@
 			"name": "Obtener info ejercicio",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_normal}}",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/5",
+					"raw": "http://localhost:8000/exercises/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -200,7 +212,7 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"5"
+						"6"
 					]
 				}
 			},
@@ -240,22 +252,78 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Fue",
+							"value": "Pericolospalotes",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "asfadASF",
+							"value": "esgssaf",
 							"type": "text"
 						},
 						{
 							"key": "typologyId",
-							"value": "1",
+							"value": "2",
 							"type": "text"
 						},
 						{
 							"key": "muscleGroupId",
 							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/exercises/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exercises",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar ejercicio",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_admin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "typologyId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "muscleGroupId",
+							"value": "",
 							"type": "text"
 						},
 						{
@@ -275,6 +343,60 @@
 					"path": [
 						"exercises",
 						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddLike",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_admin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/exercises/6/likes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exercises",
+						"6",
+						"likes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Like",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_admin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/exercises/2/likes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exercises",
+						"2",
+						"likes"
 					]
 				}
 			},

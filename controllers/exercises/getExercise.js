@@ -1,11 +1,11 @@
-const selectExerciseByIdQuery = require('../../db/queries/exercises/selectExerciseByIdQuery');
+const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery');
 
 const getExercise = async (req, res, next) => {
   try {
-    const { exerciseId } = req.params;
+    const { id: exerciseId } = req.params;
 
-    //Dado que una persona que no este logueada podria ver la lista de ejercicios,
-    const exercise = await selectExerciseByIdQuery(exerciseId);
+    //dado que una persona que no este logueada podria ver la lista de ejercicios,
+    const exercise = await infoExerciseQuery(exerciseId);
 
     res.send({
       status: 'ok',

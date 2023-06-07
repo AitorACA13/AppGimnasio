@@ -1,5 +1,5 @@
-const { description } = require('@hapi/joi/lib/base');
 const getDB = require('../../getDB');
+
 const insertExerciseQuery = async (
   name,
   description,

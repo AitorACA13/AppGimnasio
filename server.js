@@ -70,6 +70,7 @@ const {
   deleteExercise,
   addLike,
   deleteLike,
+  listExercises,
 } = require('./controllers/exercises');
 
 //Nuevo ejercicio
@@ -84,6 +85,9 @@ app.put('/exercises/:id', authUser, isAdmin, exerciseExists, modifyExercise);
 
 //Eliminar ejercicio
 app.delete('/exercises/:id', authUser, isAdmin, exerciseExists, deleteExercise);
+
+//Listar y filtrar ejercicios.
+app.get('/exercises', authUser, listExercises);
 
 /**
  * ##################################

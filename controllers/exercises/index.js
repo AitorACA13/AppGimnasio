@@ -5,6 +5,8 @@ const deleteExercise = require('./deleteExercise');
 const addLike = require('./addLike');
 const deleteLike = require('./deleteLike');
 const listExercises = require('./listExercises');
+const addFavourite = require('./addFavourite');
+const deleteFavourite = require('./deleteFavourite');
 module.exports = {
   newExercises,
   getExercise,
@@ -13,4 +15,6 @@ module.exports = {
   addLike,
   deleteLike,
   listExercises,
+  addFavourite,
+  deleteFavourite,
 };

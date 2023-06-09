@@ -13,10 +13,18 @@ const modifyExerciseQuery = async (exerciseData) => {
     await connection.query(
       `
         UPDATE exercises
-        SET name = ?, description = ?, photo = ?, typologyId = ?, muscleGroupId = ?
+        SET name = ?, description = ?, photo = ?, typologyId = ?, muscleGroupId = ?, modifiedAt =?
         WHERE id = ?
     `,
-      [name, description, photo, typologyId, muscleGroupId, idExercise]
+      [
+        name,
+        description,
+        photo,
+        typologyId,
+        muscleGroupId,
+        new Date(),
+        idExercise,
+      ]
     );
   } finally {
     if (connection) connection.release();

@@ -88,16 +88,16 @@ const main = async () => {
     );
     `);
 
-    //Creamos la tabla favourites.
+    //Creamos la tabla favourites. Modelo a seguir la identación
     await connection.query(`
-       CREATE TABLE IF NOT EXISTS favourites(
-         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-         userId INT UNSIGNED NOT NULL,
-         exerciseId INT UNSIGNED NOT NULL,
-         createdAt DATETIME NOT NULL,
-         FOREIGN KEY(userId) REFERENCES users(id),
-         FOREIGN KEY(exerciseId) REFERENCES exercises(id)
-       );
+      CREATE TABLE IF NOT EXISTS favourites(
+        id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        userId INT UNSIGNED NOT NULL,
+        exerciseId INT UNSIGNED NOT NULL,
+        createdAt DATETIME NOT NULL,
+        FOREIGN KEY(userId) REFERENCES users(id),
+        FOREIGN KEY(exerciseId) REFERENCES exercises(id)
+      );
     `);
 
     console.log('Tablas creadas');

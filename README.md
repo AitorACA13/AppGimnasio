@@ -70,17 +70,17 @@ createdAt
 ## Usuario Admin
 
 - POST ['/exercises'] ▶️ Registro de un nuevo ejercicio/entrenamiento Token ✅
-- GET ['/exercises/:exerciseId']▶️ Devuelve info de un ejercicio en concreto Token ✅
-- PUT ['/exercises/:exerciseId'] ▶️ Modificar ejercicio. Token ✅
-- DELETE ['/exercises/:exerciseId'] ▶️ Eliminar ejercicio. Token ✅
+- GET ['/exercises/:id']▶️ Devuelve info de un ejercicio en concreto Token ✅
+- PUT ['/exercises/:id'] ▶️ Modificar ejercicio. Token ✅
+- DELETE ['/exercises/:id'] ▶️ Eliminar ejercicio. Token ✅
 
 ## Usuario normal
 
-- POST ['/exercises/:exerciseId/likes'] Dar like ✅
-- DELETE ['/exercises/:exerciseId/likes'] Eliminar like ✅
+- POST ['/exercises/:id/likes'] Dar like ✅
+- DELETE ['/exercises/:id/likes'] Eliminar like ✅
 - GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios ✅
-- POST ['/exercises/:exerciseId/favorites/:userid'] Anade un ejercicio a la lista favoritos **JUEV/VIERNES**
-- DELETE ['/exercises/:exerciseId/favorites/:userId'] Eliminar un ejercicio a la lista favoritos jueves **JUEV/VIERNES**
+- POST ['/exercises/:id/favorites'] Anade un ejercicio a la lista favoritos **JUEV/VIERNES**
+- DELETE ['/exercises/:id/favorites/:favoritesId'] Eliminar un ejercicio a la lista favoritos jueves **JUEV/VIERNES**
 
 Si nos da tiempo:
 

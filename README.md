@@ -88,7 +88,7 @@ Si nos da tiempo:
 # bonus track
 
 - PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token
-- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token
-- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<<
-- PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis
-- DELETE - ['/users/:userId] - Eliminar a un usuario - el admin
+- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token ## Domingo
+- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<< ## Domingo
+- PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis ## Domingo
+- DELETE - ['/users/:id] - Eliminar a un usuario - el admin

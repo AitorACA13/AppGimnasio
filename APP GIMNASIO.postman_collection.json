@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "aac993d7-d005-46f7-a935-f0eca8aacb9d",
+		"_postman_id": "e33ac41d-d508-4edd-b982-62786c72af80",
 		"name": "APP GIMNASIO",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27584981"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -13,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Marina\",\n    \"email\": \"normal@gmail.com\",\n    \"password\": \"123456A\"\n}",
+					"raw": "{\n    \"name\": \"Ryan\",\n    \"email\": \"Ryan@gmail.com\",\n    \"password\": \"1234567\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"name\": \"Marina\",\n    \"email\": \"normal@gmail.com\",\n    \"password\": \"123456A\"\n}",
+					"raw": "{\n    \"name\": \"Ryan\",\n    \"email\": \"Ryan@gmail.com\",\n    \"password\": \"1234567\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -139,7 +138,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_admin}}",
+						"value": "{{token_admin}}",
 						"type": "text"
 					},
 					{
@@ -153,7 +152,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Pruebaequipo",
+							"value": "Pruebaequipo3",
 							"type": "text"
 						},
 						{
@@ -199,12 +198,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_normal}}",
+						"value": "{{token_admin}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/6",
+					"raw": "http://localhost:8000/exercises/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -212,7 +211,7 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"6"
+						"1"
 					]
 				}
 			},
@@ -447,6 +446,147 @@
 							"key": "muscleGroup",
 							"value": "1"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Favourites",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_normal_user}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/exercises/3/favourites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exercises",
+						"3",
+						"favourites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Favourites",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_normal_user}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/exercises/1/favourites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exercises",
+						"1",
+						"favourites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Favourites User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_normal_user}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/favourites/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"favourites",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_admin}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_normal_user}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recoverPassCode\": \"1234567\",\r\n    \"newPass\": \"Ryancontrasena\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/users/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"password"
 					]
 				}
 			},

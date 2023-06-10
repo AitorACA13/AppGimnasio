@@ -73,6 +73,7 @@ const {
   listExercises,
   addFavourite,
   deleteFavourite,
+  userFavourites,
 } = require('./controllers/exercises');
 
 //Nuevo ejercicio
@@ -110,6 +111,7 @@ app.delete('/exercises/:id/likes', authUser, exerciseExists, deleteLike);
  */
 //Añadimos favoritos
 app.post('/exercises/:id/favourites', authUser, exerciseExists, addFavourite);
+
 //Eliminar favoritos
 app.delete(
   '/exercises/:id/favourites',
@@ -117,6 +119,10 @@ app.delete(
   exerciseExists,
   deleteFavourite
 );
+
+//Listamos favoritos de un usuario
+app.get('/favourites/:id', authUser, userExists, userFavourites);
+
 /**
  * ################################################
  * ## Middlewares Control Errors & Server Listen ##

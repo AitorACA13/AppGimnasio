@@ -24,6 +24,16 @@ app.use(morgan('dev'));
 
 /**
  * ##########################
+ * ## Middlewares personalizados ##
+ * ##########################
+ */
+const authUser = require('./middlewares/authUser');
+const userExists = require('./middlewares/userExists');
+const isAdmin = require('./middlewares/isAdmin');
+const exerciseExists = require('./middlewares/exerciseExists');
+
+/**
+ * ##########################
  * ## Middlewares usuarios ##
  * ##########################
  */
@@ -33,30 +43,27 @@ const {
   loginUser,
   getUser,
   getOwnUser,
+  deleteUser,
+  editUserPass,
 } = require('./controllers/users');
+
 // Registro de usuario pendiente de validar.
 app.post('/users', newUser);
 
 // Login usuario >POST
 app.post('/users/login', loginUser);
+
 // Info usuario > GET
 app.get('/users/:userId', getUser);
+
 //Info usuario logueado >GET
+app.get('/users', authUser, userExists, getOwnUser);
 
 //Editar contraseña>PUT
+app.put('/users/password', editUserPass); // _________________ ESTA A MEDIAS A FALTA DE COMPLETAR BREVO.____________
 
-//**extras**>Eliminar usuario (solo admin):DELETE & Editar usuario:PUT
-/**
- * ##########################
- * ## Middlewares personalizados ##
- * ##########################
- */
-const authUser = require('./middlewares/authUser');
-const userExists = require('./middlewares/userExists');
-const isAdmin = require('./middlewares/isAdmin');
-const exerciseExists = require('./middlewares/exerciseExists');
-
-app.get('/users', authUser, userExists, getOwnUser);
+//Eliminar usuario.
+app.delete('/users/:id', authUser, userExists, isAdmin, deleteUser);
 
 /**
  * ###########################

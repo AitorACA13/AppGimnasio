@@ -31,7 +31,7 @@ const main = async () => {
         email VARCHAR(100) UNIQUE NOT NULL , 
         password VARCHAR(100) NOT NULL,
         -- registrationCode POR SI ACASO QUEREMOS IMPLEMENTARLO, 
-        -- recoverPassCode MAS DE LO MISMO  ,
+        recoverPassCode VARCHAR(100) ,
         -- active BOOLEAN DEFAULT false,
         avatar VARCHAR(100) ,
         role ENUM('admin', 'normal') DEFAULT 'normal' ,

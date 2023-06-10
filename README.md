@@ -79,8 +79,9 @@ createdAt
 - POST ['/exercises/:id/likes'] Dar like ✅
 - DELETE ['/exercises/:id/likes'] Eliminar like ✅
 - GET ['/exercises'] ▶️ Listado de todos los ejercicios con filtros. Token hace falta estar logeado para ver ejercicios ✅
-- POST ['/exercises/:id/favorites'] Anade un ejercicio a la lista favoritos **JUEV/VIERNES**
-- DELETE ['/exercises/:id/favorites/:favoritesId'] Eliminar un ejercicio a la lista favoritos jueves **JUEV/VIERNES**
+- POST ['/exercises/:id/favorites'] Añade un ejercicio a la lista favoritos ✅
+- DELETE ['/exercises/:id/favorites'] Eliminar un ejercicio a la lista favoritos jueves ✅
+- GET ['/favourites/:id'] ▶️ Listado de todos los favoritos según usuario. Token hace falta estar logeado para ver ejercicios ✅
 
 Si nos da tiempo:
 

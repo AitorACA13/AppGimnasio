@@ -4,7 +4,8 @@ const fs = require('fs/promises');
 const path = require('path');
 const sharp = require('sharp');
 const { v4: uuid } = require('uuid');
-const { UPLOADS_DIR } = process.env;
+const { UPLOADS_DIR, SMTP_PASS, SMTP_USER } = process.env;
+const nodemailer = require('nodemailer');
 console.log(UPLOADS_DIR);
 /**
  * ####################
@@ -87,9 +88,43 @@ const deletePhoto = async (imgName) => {
     generateError('Error al eliminar la imagen del servidor', 500);
   }
 };
+
+/**
+ * ###############
+ * ## Send Mail ##
+ * ###############
+ */
+
+// Creamos un transporte para poder enviar emails con nodemailer.
+const transport = nodemailer.createTransport({
+  host: 'smtp-relay.sendinblue.com',
+  port: 587,
+  auth: {
+    user: SMTP_USER,
+    pass: SMTP_PASS,
+  },
+});
+
+const sendMail = async (email, subject, body) => {
+  try {
+    const mailOptions = {
+      from: SMTP_USER,
+      to: email,
+      subject,
+      text: body,
+    };
+
+    await transport.sendMail(mailOptions);
+  } catch (err) {
+    console.error(err);
+    generateError('Error al enviar el email al usuario', 500);
+  }
+};
+
 module.exports = {
   generateError,
   validateSchema,
   savePhoto,
   deletePhoto,
+  sendMail,
 };

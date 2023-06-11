@@ -1,18 +1,25 @@
 {
 	"info": {
-		"_postman_id": "e33ac41d-d508-4edd-b982-62786c72af80",
+		"_postman_id": "3a4849f6-f72f-4cfc-98d1-bc13d2801272",
 		"name": "APP GIMNASIO",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27492829"
 	},
 	"item": [
 		{
 			"name": "New User",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Ryan\",\n    \"email\": \"Ryan@gmail.com\",\n    \"password\": \"1234567\"\n}",
+					"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -34,13 +41,44 @@
 			"response": []
 		},
 		{
-			"name": "Login User",
+			"name": "Validate User",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Ryan\",\n    \"email\": \"Ryan@gmail.com\",\n    \"password\": \"1234567\"\n}\n",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/users/validate/a57d5972-2282-4074-bfe3-770d6dd71973",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"validate",
+						"a57d5972-2282-4074-bfe3-770d6dd71973"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,7 +101,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Admin: Get User info",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -76,10 +114,15 @@
 						"key": "Authorization",
 						"value": "{{token_user_admin}}",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_user_uri}}",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/users/2",
+					"raw": "http://localhost:8000/users/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,14 +130,14 @@
 					"port": "8000",
 					"path": [
 						"users",
-						"2"
+						"7"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Info Usuario",
+			"name": "User: Gets User Info",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -103,7 +146,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_normal}}",
+						"value": "{{token_user_uri}}",
 						"type": "text"
 					}
 				],
@@ -117,7 +160,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/users/2",
+					"raw": "http://localhost:8000/users/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -125,20 +168,71 @@
 					"port": "8000",
 					"path": [
 						"users",
-						"2"
+						"7"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Ejercicio",
+			"name": "Edit Avatar",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_uri}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Ryan",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ryanquinn23@live.co.uk",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "HackbOSs_9*",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/Users/marina.hernandez/Downloads/detailslider_LeCol_SS23_mens_Pro_bibshorts2_Grey_2.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/users/avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Exercise",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_admin}}",
+						"value": "{{token_user_admin}}",
 						"type": "text"
 					},
 					{
@@ -152,12 +246,12 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Pruebaequipo3",
+							"value": "PrubaPostman",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "asfa",
+							"value": "Probandoprobando1212",
 							"type": "text"
 						},
 						{
@@ -192,18 +286,18 @@
 			"response": []
 		},
 		{
-			"name": "Obtener info ejercicio",
+			"name": "Get Exercise Info",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_admin}}",
+						"value": "{{token_user_normal}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/1",
+					"raw": "http://localhost:8000/exercises/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -211,14 +305,14 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"1"
+						"6"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Modificar ejercicio",
+			"name": "Modify Exercise",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -251,12 +345,12 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Pericolospalotes",
+							"value": "sisi",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "esgssaf",
+							"value": "Mancuernas",
 							"type": "text"
 						},
 						{
@@ -277,7 +371,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8000/exercises/6",
+					"raw": "http://localhost:8000/exercises/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -285,14 +379,14 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"6"
+						"5"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Eliminar ejercicio",
+			"name": "Delete Exercise",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -354,12 +448,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_admin}}",
+						"value": "{{token_user_normal}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/6/likes",
+					"raw": "http://localhost:8000/exercises/1/likes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -367,7 +461,7 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"6",
+						"1",
 						"likes"
 					]
 				}
@@ -381,12 +475,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_user_admin}}",
+						"value": "{{token_user_normal}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/2/likes",
+					"raw": "http://localhost:8000/exercises/1/likes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -394,7 +488,7 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"2",
+						"1",
 						"likes"
 					]
 				}
@@ -402,64 +496,14 @@
 			"response": []
 		},
 		{
-			"name": "list exercises",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_normal_user}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8000/exercises?keyword=Man&typology=2&muscleGroup=1",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises"
-					],
-					"query": [
-						{
-							"key": "keyword",
-							"value": "Man"
-						},
-						{
-							"key": "typology",
-							"value": "2"
-						},
-						{
-							"key": "muscleGroup",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Favourites",
+			"name": "Add Favourite",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_normal_user}}",
-						"type": "default"
+						"value": "{{token_user_normal}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -479,18 +523,18 @@
 			"response": []
 		},
 		{
-			"name": "Delete Favourites",
+			"name": "Delete Favourite",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_normal_user}}",
-						"type": "default"
+						"value": "{{token_user_admin}}",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/exercises/1/favourites",
+					"raw": "http://localhost:8000/exercises/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -498,33 +542,6 @@
 					"port": "8000",
 					"path": [
 						"exercises",
-						"1",
-						"favourites"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Favourites User",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_normal_user}}",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/favourites/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"favourites",
 						"2"
 					]
 				}
@@ -532,18 +549,27 @@
 			"response": []
 		},
 		{
-			"name": "Delete User",
+			"name": "Edit Password",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_admin}}",
-						"type": "default"
+						"value": "{{token_user_normal}}",
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"oriol.solanes.lopez@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8000/users/2",
+					"raw": "http://localhost:8000/users/password/recover",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -551,26 +577,27 @@
 					"port": "8000",
 					"path": [
 						"users",
-						"2"
+						"password",
+						"recover"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Modify Password",
+			"name": "Update Password",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token_normal_user}}",
-						"type": "default"
+						"value": "{{token_user_normal}}",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"recoverPassCode\": \"1234567\",\r\n    \"newPass\": \"Ryancontrasena\"\r\n}",
+					"raw": "{\n    \"recoverPassCode\":\"rW5a6mMd\",\n    \"newPass\": \"adgsdjsh*9A_\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -587,6 +614,32 @@
 					"path": [
 						"users",
 						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token_user_admin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/users/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"5"
 					]
 				}
 			},
@@ -615,12 +668,22 @@
 	],
 	"variable": [
 		{
-			"key": "token_normal_user",
+			"key": "token_user_admin",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"key": "token_admin",
+			"key": "token_user_normal",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_user_ryan",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_user_uri",
 			"value": "",
 			"type": "string"
 		}

@@ -51,10 +51,16 @@ const {
   getOwnUser,
   deleteUser,
   editUserPass,
+  validateUser,
+  sendRecoverPass,
+  editUserAvatar,
 } = require('./controllers/users');
 
 // Registro de usuario pendiente de validar.
 app.post('/users', newUser);
+
+//Validar usuario con código de registro.
+app.put('/users/validate/:regCode', validateUser);
 
 // Login usuario >POST
 app.post('/users/login', loginUser);
@@ -62,15 +68,22 @@ app.post('/users/login', loginUser);
 // Info usuario > GET
 app.get('/users/:userId', getUser);
 
-//Info usuario logueado >GET
+//Info usuario logueado que obtiene info de si mismo>GET
 app.get('/users', authUser, userExists, getOwnUser);
 
+// Enviar al usuario un email de recuperación de contraseña.
+app.put('/users/password/recover', sendRecoverPass);
+
 //Editar contraseña>PUT
-app.put('/users/password', editUserPass); // _________________ ESTA A MEDIAS A FALTA DE COMPLETAR BREVO.____________
+app.put('/users/password', editUserPass);
+
+// Editar avatar de usuario.
+app.put('/users/avatar', authUser, userExists, editUserAvatar);
 
 //Eliminar usuario.
 app.delete('/users/:id', authUser, userExists, isAdmin, deleteUser);
 
+//
 /**
  * ###########################
  * ## Middlewares Exercises ##

@@ -10,7 +10,7 @@ const selectUserByEmailQuery = async (email) => {
 
     // Tratamos de localizar al usuario con el email establecido.
     const [users] = await connection.query(
-      `SELECT id, password, role FROM users WHERE email = ?`,
+      `SELECT id, password, role, active FROM users WHERE email = ?`,
       [email]
     );
 

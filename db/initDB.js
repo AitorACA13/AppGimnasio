@@ -30,10 +30,10 @@ const main = async () => {
         name VARCHAR (30) NOT NULL ,
         email VARCHAR(100) UNIQUE NOT NULL , 
         password VARCHAR(100) NOT NULL,
-        -- registrationCode POR SI ACASO QUEREMOS IMPLEMENTARLO, 
+        registrationCode VARCHAR(100),
         recoverPassCode VARCHAR(100) ,
-        -- active BOOLEAN DEFAULT false,
-        avatar VARCHAR(100) ,
+        active BOOLEAN DEFAULT false,
+        avatar VARCHAR(100),
         role ENUM('admin', 'normal') DEFAULT 'normal' ,
         modifiedAt DATETIME ,
         createdAt DATETIME NOT NULL

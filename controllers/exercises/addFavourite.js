@@ -4,7 +4,7 @@ const addFavouriteQuery = require('../../db/queries/exercises/addFavouriteQuery'
 
 const addFavourite = async (req, res, next) => {
   try {
-    //destructuring
+    //Destructuring del Id del ejercicio
     const { id: idExercise } = req.params;
 
     await addFavouriteQuery(idExercise, req.user.id);

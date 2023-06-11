@@ -1,6 +1,6 @@
 'use strict';
 
-const { generateError, deletePhoto, savePhoto } = require('../../helpers');
+const { generateError, savePhoto, deletePhoto } = require('../../helpers');
 
 const modifyExerciseQuery = require('../../db/queries/exercises/modifyExerciseQuery');
 const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery');

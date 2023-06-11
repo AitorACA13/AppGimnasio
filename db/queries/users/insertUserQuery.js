@@ -3,7 +3,7 @@ const getDB = require('../../getDB');
 const bcrypt = require('bcrypt');
 
 const { generateError } = require('../../../helpers');
-const insertUserQuery = async (name, email, password) => {
+const insertUserQuery = async (name, email, password, registrationCode) => {
   let connection;
 
   try {
@@ -26,8 +26,8 @@ const insertUserQuery = async (name, email, password) => {
 
     // Insertamos el usuario en la base de datos.
     await connection.query(
-      `INSERT INTO users (name, email, password, createdAt) VALUES(?, ?, ?, ?)`,
-      [name, email, hashedPass, new Date()]
+      `INSERT INTO users (name, email, password, registrationCode, createdAt) VALUES(?, ?, ?, ?, ?)`,
+      [name, email, hashedPass, registrationCode, new Date()]
     );
   } finally {
     if (connection) connection.release();

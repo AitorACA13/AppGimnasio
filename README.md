@@ -60,10 +60,13 @@ createdAt
 ## Users Endpoints:
 
 - POST ['/users'] ▶️ Registro de usuario pendiente de validar ◾ newUser.✅
-- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com<<
-- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser.✅
-- GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario)✅
-- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario)✅
+- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. ✅
+- POST - ['/users/login'] ▶️ Logea a un usuario retornando un token. loginUser. ✅
+- GET - ['/users/:userId'] ▶️ Retorna información de un usuario(mi propio usuario) ✅
+- GET - ['/users'] ▶️ Retorna información de un usuario del token(mi propio usuario) ✅
+- PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. ✅
+- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token **ERROR:Tutoria. Funciona, pero al conectar con joi,recorverpass code undefined**
+- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token ✅
 
 ## Exercises:
 
@@ -84,11 +87,8 @@ createdAt
 - DELETE ['/exercises/:id/favorites'] Eliminar un ejercicio a la lista favoritos jueves ✅
 - GET ['/favourites/:id'] ▶️ Listado de todos los favoritos según usuario. Token hace falta estar logeado para ver ejercicios ✅
 
-Si nos da tiempo:
 
-# bonus track
 
-- PUT - ['/users/password'] - Resetea la contraseña de un usuario. Token
-- PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token ## Domingo
-- PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<< ## Domingo
-- PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis ## Domingo
+
+
+

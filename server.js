@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const cors = require('cors');
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
@@ -21,6 +21,12 @@ app.use(fileUpload());
 
 // Middleware que muestra información sobre la petición entrante
 app.use(morgan('dev'));
+
+//Middleware que evita problemas con cors cuando intentamos conectar el cliente con el servidor.
+app.use(cors());
+
+//Middleware que indica al servidor cual es el directorio de ficheros estáticos.
+app.use(express.static(process.env.UPLOADS_DIR));
 
 /**
  * ##########################

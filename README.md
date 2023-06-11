@@ -73,6 +73,7 @@ createdAt
 - GET ['/exercises/:id']▶️ Devuelve info de un ejercicio en concreto Token ✅
 - PUT ['/exercises/:id'] ▶️ Modificar ejercicio. Token ✅
 - DELETE ['/exercises/:id'] ▶️ Eliminar ejercicio. Token ✅
+- DELETE - ['/users/:id] - Eliminar a un usuario - Role:Administrador. ✅
 
 ## Usuario normal
 
@@ -91,4 +92,3 @@ Si nos da tiempo:
 - PUT - ['/users/avatar'] - Permite actualizar el avatar del usuario. ➡️ Token ## Domingo
 - PUT - ['/users/validate/:regCode'] ▶️ Valida a un usuario recién registrado. >>opcional:brevo.com'anonimo'<< ## Domingo
 - PUT - ['/users/password/recover'] - Envía al usuario un correo de recuperación de contraseña. >regis ## Domingo
-- DELETE - ['/users/:id] - Eliminar a un usuario - el admin

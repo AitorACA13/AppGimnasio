@@ -1,7 +1,8 @@
 //insertNewUserQuery
 const insertUserQuery = require('../../db/queries/users/insertUserQuery');
+const newUserSchema = require('../../schemas/newUserSchema');
 
-const { generateError } = require('../../helpers');
+const { generateError, validateSchema } = require('../../helpers');
 //newUser controller
 const newUser = async (req, res, next) => {
   try {
@@ -12,7 +13,7 @@ const newUser = async (req, res, next) => {
     if (!name || !email || !password) {
       generateError('Faltan campos', 400);
     }
-
+    await validateSchema(newUserSchema, req.body);
     //Si el check es correcto, query para insertar newUser en DB
     await insertUserQuery(name, email, password);
 

@@ -2,10 +2,10 @@ const updateUserRegCodeQuery = require('../../db/queries/users/updateUserRegCode
 
 const validateUser = async (req, res, next) => {
   try {
-    //obtenemos el codigo registro de los path params
+    //Obtenemos el codigo de registro a través de un destructuring de los path params.
     const { regCode } = req.params;
 
-    //activamos el usuario
+    //Activamos el usuario.
     await updateUserRegCodeQuery(regCode);
     res.send({
       status: 'ok',

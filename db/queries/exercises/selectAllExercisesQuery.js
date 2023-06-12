@@ -9,9 +9,9 @@ const selectAllExercisesQuery = async (
   let connection;
   try {
     connection = await getDB();
-    //si la fecha está en order ascendente (ASC), utilizar ASC. Sino establecer como valor por defecto DESC (descendente)
+    //si la fecha está en orden ascendente (ASC), utilizar ASC. Sino establecer como valor por defecto DESC (descendente).
     date = date.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
-
+    //Seleccionamos los datos que queremos mostrar...
     const [exercises] = await connection.query(
       `
         SELECT 
@@ -26,6 +26,7 @@ const selectAllExercisesQuery = async (
         WHERE E.name LIKE ? AND E.typologyId LIKE ? AND E.muscleGroupId LIKE ?
         GROUP BY E.id
         ORDER BY E.createdAt ${date};`,
+      //...y filtramos según los tres campos especificados.
       [`%${keyword}%`, `%${typology}%`, `%${muscleGroup}%`]
     );
     return exercises;

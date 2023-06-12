@@ -2,13 +2,13 @@
 
 const exerciseExistsQuery = require('../db/queries/exercises/exerciseExistsQuery');
 
-// comprobamos que existe el ejercicios en el DB
+//Comprobamos si existe el ejercicio en el DB
 const exerciseExists = async (req, res, next) => {
   try {
-    //variable que guarda el id del ejercicio
+    //Variable que almacena el id del ejercicio.
     const { id } = req.params;
 
-    //consulta del id del ejercicio a la DB
+    //Consulta del id del ejercicio a la DB.
     await exerciseExistsQuery(id);
 
     next();

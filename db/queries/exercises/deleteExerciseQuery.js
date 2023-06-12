@@ -5,7 +5,7 @@ const deleteExerciseQuery = async (idExercise) => {
   try {
     connection = await getDB();
 
-    //borramos primero los likes porque dependen los ejercicios
+    //Borramos primero los likes ya que dependen de los ejercicios.
     await connection.query(
       `
             DELETE
@@ -14,7 +14,7 @@ const deleteExerciseQuery = async (idExercise) => {
         `,
       [idExercise]
     );
-    //borramos primero los favoritos porque dependen los ejercicios
+    //Después borramos los favoritos porque también dependen de los ejercicios.
     await connection.query(
       `
             DELETE
@@ -23,7 +23,7 @@ const deleteExerciseQuery = async (idExercise) => {
         `,
       [idExercise]
     );
-    //finalmente borramos el ejercicio.
+    //Finalmente borramos el ejercicio.
     await connection.query(
       `
           DELETE

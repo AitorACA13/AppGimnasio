@@ -4,9 +4,9 @@ const selectAllFavouritesQuery = async (userId, date = '') => {
   let connection;
   try {
     connection = await getDB();
-    //si la fecha está en order ascendente (ASC), utilizar ASC. Sino establecer como valor por defecto DESC (descendente)
+    //Si la fecha está en ordeN ascendente (ASC), utilizar ASC. Sino establecer como valor por defecto DESC (descendente)
     date = date.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
-
+    //Seleccionamos los datos que queremos mostrar.
     const [totalFavs] = await connection.query(
       `
         SELECT 

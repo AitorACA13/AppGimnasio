@@ -1,5 +1,5 @@
 'use strict';
-
+//Importamos los middlewares para guardar y borrar fotos, ya que en este request el usuario puede modificar su avatar.
 const { generateError, savePhoto, deletePhoto } = require('../../helpers');
 
 const modifyExerciseQuery = require('../../db/queries/exercises/modifyExerciseQuery');
@@ -7,10 +7,10 @@ const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery'
 
 const modifyExercise = async (req, res, next) => {
   try {
-    //destructuring del body
+    //Destructuring del body
     let { name, description, typologyId, muscleGroupId } = req.body;
 
-    //si faltan campos generamos un error
+    //Si faltan campos generamos un error. El usuario no está obligado a subir una foto, por lo que ponemos un interrogante después de "req.files".
     if (
       !name &&
       !description &&
@@ -21,13 +21,12 @@ const modifyExercise = async (req, res, next) => {
       generateError('Faltan campos', 400);
     }
 
-    //destructuring del path params
+    //Destructuring del path params
     const { id: idExercise } = req.params;
 
-    //cogemos toda la info del ejercicio de la DB
     const infoExercise = await infoExerciseQuery(idExercise);
 
-    //destructuring de la info del ejercicio de DB
+    //Destructuring de las columnas de la tabla "exercises" que nos conciernen. Con "[columna]DB" establecemos que su valor inicial debe ser el que ya tiene en la tabla "exercises".
     const {
       name: nameDB,
       description: descriptionDB,
@@ -36,28 +35,27 @@ const modifyExercise = async (req, res, next) => {
       muscleGroupId: muscleGroupDB,
     } = infoExercise;
 
-    //comprobamos de contenido. Si no se modifica se asigna el valor de la DB
+    //Comprobamos si el admin ha cambiado alguno de los datos. De no ser así, se retorna el dato que ya existía en la base de datos.
     name = name || nameDB;
     description = description || descriptionDB;
     typologyId = typologyId || typologyDB;
     muscleGroupId = muscleGroupId || muscleGroupDB;
 
-    //MANEJO DE LA FOTO
-    //variable que almacenara foto
+    //Variable que almacenará la foto, si el admin decide subir una.
     let imgNameExercise;
 
-    //checkamos si existe una imagen
+    //Si el admin ha subido una foto...
     if (req.files?.photo) {
-      //y borramos la foto anterior si existe una nueva
+      //...borramos la anterior.
       await deletePhoto(photoDB);
 
-      //guardamos de la imagen en uploads y obtenemos del nombre con funcion savePhoto.
+      //Guardamos la imagen en la carpeta "uploads" y le asignamos un nombre con la función "savePhoto".
       imgNameExercise = await savePhoto(req.files.photo);
     }
-
+    //Si el admin no ha subido una imagen, utilizar la que ya existía.
     imgNameExercise = imgNameExercise || photoDB;
 
-    //bbjeto como parametro
+    //Destructuring de los datos del ejercicio que modificaremos a continuación.
     const exerciseData = {
       name,
       description,
@@ -67,9 +65,9 @@ const modifyExercise = async (req, res, next) => {
       idExercise,
     };
 
-    // actualizamos datos del ejercicio
+    //Actualizamos los datos del ejercicio.
     await modifyExerciseQuery(exerciseData);
-
+    //Mandamos un mensaje confirmando la correcta modificación de los datos del ejercicio. Asignamos un valor a la columna "modifiedAt".
     res.send({
       status: 'ok',
       message: `Ejercicio ${idExercise} modificado correctamente`,

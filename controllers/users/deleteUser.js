@@ -1,8 +1,8 @@
 const deleteUserQuery = require('../../db/queries/users/deleteUserQuery');
-const { generateError } = require('../../helpers');
 
 const deleteUser = async (req, res, next) => {
   try {
+    //Obtemos el id del usuario que se va a borrar utilizando los path params.
     const { id } = req.params;
 
     await deleteUserQuery(id);

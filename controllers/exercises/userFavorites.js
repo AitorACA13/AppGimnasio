@@ -1,15 +1,13 @@
 const selectAllFavouritesQuery = require('../../db/queries/exercises/selectAllFavouritesQuery');
-const { generateError } = require('../../helpers');
+
 const userFavourites = async (req, res, next) => {
   try {
+    //Destructuring del Id del usuario.
     const { id: idUser } = req.user;
-
+    //Path params del usuario.
     const { id } = req.params;
 
-    /* if (idUser !== Number(id)) {
-     generateError('No tienes permisos para ver estos favoritos.', 401);
-    }  */
-
+    //Seleccionamos los ejercicios del usuario logueado.
     const favs = await selectAllFavouritesQuery(idUser);
 
     res.send({

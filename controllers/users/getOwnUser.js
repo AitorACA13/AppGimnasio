@@ -2,7 +2,7 @@ const selectUserByIdQuery = require('../../db/queries/users/selectUserByIdQuery'
 
 const getOwnUser = async (req, res, next) => {
   try {
-    // Obtenemos el usuario.
+    //Obtenemos el usuario.
     const user = await selectUserByIdQuery(req.user.id);
 
     res.send({

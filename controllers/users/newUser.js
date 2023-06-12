@@ -1,4 +1,3 @@
-//insertNewUserQuery
 const insertUserQuery = require('../../db/queries/users/insertUserQuery');
 const newUserSchema = require('../../schemas/newUserSchema');
 const { v4: uuid } = require('uuid');
@@ -10,31 +9,30 @@ const newUser = async (req, res, next) => {
     //Obtener name, email & password del body
     const { name, email, password } = req.body;
 
-    // Validamos los datos del body con joi.
+    //Validamos los datos del body con joi.
     await validateSchema(newUserSchema, req.body);
 
-    //Check de campos requeridos
     if (!name || !email || !password) {
       generateError('Faltan campos', 400);
     }
 
-    // Generamos el código de registro.
+    //Generamos el código de registro.
     const registrationCode = uuid();
 
-    // Insertamos al usuario en la base de datos.
+    //Insertamos al usuario en la base de datos.
     await insertUserQuery(name, email, password, registrationCode);
 
-    // Creamos el asunto del email de verificación.
+    // reamos el asunto del email de verificación.
     const emailSubject = 'Activa tu usuario en la app de GymÑam';
 
-    // Creamos el contenido del email.
+    //Creamos el contenido del email.
     const emailBody = `
         ¡Bienvenid@ a GymÑam, ${name}!
 
         Por favor, verifica tu usuario a través del <a href=http://localhost:8000/users/validate/${registrationCode}>Siguiente enlace</a>
     `;
 
-    // Enviamos el email de verificación.
+    //Enviamos el email de verificación.
     await sendMail(email, emailSubject, emailBody);
 
     res.send({

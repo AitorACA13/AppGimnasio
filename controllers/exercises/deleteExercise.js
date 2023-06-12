@@ -1,8 +1,8 @@
 const deleteExerciseQuery = require('../../db/queries/exercises/deleteExerciseQuery');
-const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery');
 
 const deleteExercise = async (req, res, next) => {
   try {
+    //Destructuring del Id del ejercicio
     const { id: idExercise } = req.params;
 
     await deleteExerciseQuery(idExercise);

@@ -8,7 +8,7 @@ const updatePassQuery = async (recoverPassCode, newPass) => {
   let connection;
   try {
     connection = await getDB();
-    //Comprobamos si hay algún usuario con ese código de recuperación
+    //Comprobamos si hay algún usuario con ese código de recuperación.
     const [users] = await connection.query(
       ` SELECT id FROM users WHERE recoverPassCode= ?`,
       [recoverPassCode]
@@ -19,10 +19,10 @@ const updatePassQuery = async (recoverPassCode, newPass) => {
       generateError('Código de recuperación incorrecto', 404);
     }
 
-    //Encriptamos la nueva contraseña
+    //Encriptamos la nueva contraseña.
     const hashedPass = await bcrypt.hash(newPass, 10);
 
-    //Actualizamos el usuario
+    //Actualizamos el usuario.
     await connection.query(
       `
         UPDATE users SET password= ?, recoverPassCode= null, modifiedAt= ? WHERE recoverPassCode= ?`,

@@ -7,12 +7,11 @@ const deleteLikeQuery = async (idExercise, userId) => {
   try {
     connection = await getDB();
 
-    //Comprobamos si el usuario ya ha dado a like
     const [likes] = await connection.query(
       `SELECT id FROM likes WHERE exerciseId=? AND userId=?`,
       [idExercise, userId]
     );
-
+    //Si el usuario no ha dado like, lanzamos un error.
     if (likes.length < 1) {
       generateError('Like no encontrado', 404);
     }

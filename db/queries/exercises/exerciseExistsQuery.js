@@ -18,7 +18,7 @@ const exerciseExistsQuery = async (idExercise) => {
       [idExercise]
     );
 
-    //checkeo de exercise
+    //Si el ejercicio no existe, lanzamos un error.
     if (exercise.length === 0) {
       generateError(`El ejercicio ${idExercise} no existe`, 404);
     }

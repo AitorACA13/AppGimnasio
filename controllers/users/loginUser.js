@@ -15,21 +15,21 @@ const loginUser = async (req, res, next) => {
 
     const user = await selectUserByEmailQuery(email);
 
-    // Comprobamos si las contraseñas coinciden.
+    //Comprobamos si las contraseñas coinciden.
     const validPass = await bcrypt.compare(password, user.password);
 
-    // Si no coinciden lanzamos un error.
+    //Si no coinciden lanzamos un error.
     if (!validPass) {
       generateError('Contraseña incorrecta', 401);
     }
 
-    // Objeto con info que queremos agregar al token.
+    //Objeto con info que queremos agregar al token.
     const tokenInfo = {
       id: user.id,
       role: user.role,
     };
 
-    // Creamos el token.
+    //Creamos el token.
     const token = jwt.sign(tokenInfo, process.env.SECRET, {
       expiresIn: '10d',
     });

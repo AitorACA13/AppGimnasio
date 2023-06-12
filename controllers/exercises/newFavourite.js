@@ -1,12 +1,10 @@
-const favouriteExerciseQuery = require('../../db/queries/exercises/favouriteExerciseQuery');
-const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery');
-
-const { generateError } = require('../../helpers');
+const favouriteExerciseQuery = require('../../db/queries/exercises/addFavouriteQuery');
 
 const newFavourite = async (req, res, next) => {
   try {
+    //Destructing del Id del ejercicio.
     const { id: idExercise } = req.params;
-    const favourite = await favouriteExerciseQuery(idExercise, req.user.id);
+    await favouriteExerciseQuery(idExercise, req.user.id);
   } catch (err) {
     next(err);
   }

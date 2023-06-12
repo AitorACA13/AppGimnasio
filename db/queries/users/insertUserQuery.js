@@ -9,19 +9,18 @@ const insertUserQuery = async (name, email, password, registrationCode) => {
   try {
     connection = await getDB();
 
-    // Comprobamos si el email está repetido.
+    //Comprobamos si el email está repetido.
     let [users] = await connection.query(
       `SELECT id FROM users WHERE email = ?`,
       [email]
     );
 
-    // Si el array de usuarios tiene más de 0 usuarios quiere decir que el email está repetido.
+    //Si el array de usuarios tiene más de 0 usuarios quiere decir que el email está repetido.
     if (users.length > 0) {
       generateError('Ya existe un usuario con ese email', 403);
     }
 
-    // Encriptamos la contraseña. 10=indica seguridad nivel de seguridad. Cuanto mas alto el valor + segura la encriptacion
-
+    //Encriptamos la contraseña. 10=indica el nivel de seguridad. Cuanto mas alto el valor, más segura la encriptacion.
     const hashedPass = await bcrypt.hash(password, 10);
 
     // Insertamos el usuario en la base de datos.

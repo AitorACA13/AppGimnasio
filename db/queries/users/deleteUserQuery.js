@@ -5,7 +5,7 @@ const deleteUserQuery = async (userId) => {
   try {
     connection = await getDB();
 
-    //borramos primero los likes porque dependen del usuario
+    //Borramos primero los likes porque dependen del usuario.
     await connection.query(
       `
             DELETE
@@ -14,7 +14,7 @@ const deleteUserQuery = async (userId) => {
         `,
       [userId]
     );
-    //borramos primero los favoritos porque dependen del
+    //Después borramos los favoritos porque también dependen del usuario.
     await connection.query(
       `
             DELETE
@@ -23,7 +23,7 @@ const deleteUserQuery = async (userId) => {
         `,
       [userId]
     );
-    //finalmente borramos el usuario.
+    //Finalmente borramos el usuario.
     await connection.query(
       `
           DELETE

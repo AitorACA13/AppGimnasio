@@ -1,7 +1,5 @@
 const getDB = require('../../getDB');
 
-//queremos obtener informacion del ej de la dbs
-
 const infoExerciseQuery = async (idExercise) => {
   let connection;
 
@@ -17,7 +15,7 @@ const infoExerciseQuery = async (idExercise) => {
       [idExercise]
     );
 
-    //return para tener toda la info sobre el ejercicio solicitado
+    //Retornamos la información del ejercicio.
     return infoExercise[0];
   } finally {
     if (connection) connection.release();

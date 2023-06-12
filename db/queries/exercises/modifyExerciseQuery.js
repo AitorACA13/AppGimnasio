@@ -5,11 +5,11 @@ const modifyExerciseQuery = async (exerciseData) => {
 
   try {
     connection = await getDB();
-
+    //Hacemos un destructuring de los datos del ejercicio.
     const { name, description, typologyId, muscleGroupId, photo, idExercise } =
       exerciseData;
 
-    //actualizamos datos
+    //Actualizamos los datos.
     await connection.query(
       `
         UPDATE exercises

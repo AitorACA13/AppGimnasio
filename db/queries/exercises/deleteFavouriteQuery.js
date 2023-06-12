@@ -7,12 +7,11 @@ const deleteFavouriteQuery = async (idExercise, userId) => {
   try {
     connection = await getDB();
 
-    //Comprobamos si el usuario ya ha dado a like
     const [favourites] = await connection.query(
       `SELECT id FROM favourites WHERE exerciseId=? AND userId=?`,
       [idExercise, userId]
     );
-
+    //Comprobamos si el usuario ha añadido el ejercicio a sus favoritos, y de no ser el caso lanzamos un error.
     if (favourites.length < 1) {
       generateError('Favorito no encontrado', 404);
     }

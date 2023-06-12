@@ -4,7 +4,7 @@ const updateUserAvatarQuery = async (avatar, userId) => {
   let connection;
   try {
     connection = await getDB();
-
+    //Actualizamos el avatar y el campo "modifiedAt".
     await connection.query(
       ` UPDATE users SET avatar = ?, modifiedAt=? WHERE id=?
       `,

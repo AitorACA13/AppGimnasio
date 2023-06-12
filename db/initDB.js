@@ -9,9 +9,6 @@ const main = async () => {
     connection = await getDB();
 
     console.log('Borrando tablas del gym');
-    // %%%%%%%%%%%%%  FALTA COLOCAR LAS FOREIGN KEY EN LAS TABLAS  %%%%%%%%%%%%%%%%%%%
-
-    //await connection.query(`DROP DATABASE IF EXISTS gymñam`);
 
     await connection.query(`DROP TABLE IF EXISTS favourites`);
     await connection.query(`DROP TABLE IF EXISTS likes`);
@@ -58,7 +55,7 @@ const main = async () => {
        );
     `);
 
-    //Creamos la tabla exercises.  MODELO A SEGUIR.
+    //Creamos la tabla exercises.
     await connection.query(`
       CREATE TABLE IF NOT EXISTS exercises(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -88,7 +85,7 @@ const main = async () => {
     );
     `);
 
-    //Creamos la tabla favourites. Modelo a seguir la identación
+    //Creamos la tabla favourites.
     await connection.query(`
       CREATE TABLE IF NOT EXISTS favourites(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -102,10 +99,10 @@ const main = async () => {
 
     console.log('Tablas creadas');
 
-    //Encriptar la contraseña del admin
+    //Encriptamos la contraseña del admin.
     const hashedPass = await bcrypt.hash('1234567', 10);
 
-    //Crear un usuario de administrador.
+    //Creamos un usuario de administrador.
     await connection.query(
       `INSERT INTO users (name, email, password, role , createdAt) VALUES('Marina', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
       [new Date()]
@@ -113,7 +110,7 @@ const main = async () => {
 
     console.log('Usuario administrador creado.');
 
-    //Insertar grupos musculares.
+    //Insertamos los grupos musculares.
     await connection.query(
       `INSERT INTO muscleGroups (name, createdAt) VALUES('biceps' ,?)`,
       [new Date()]
@@ -128,7 +125,7 @@ const main = async () => {
       [new Date()]
     );
 
-    //insertar tipologias.
+    //Insertamos las tipologias.
     await connection.query(
       `INSERT INTO typologys (name, createdAt) VALUES('Musculación' ,?)`,
       [new Date()]
@@ -137,7 +134,7 @@ const main = async () => {
       `INSERT INTO typologys (name, createdAt) VALUES('Cardio' ,?)`,
       [new Date()]
     );
-    // Insertar ejercicios base Musculación.
+    // Insertar ejercicios base musculación.
     await connection.query(
       `INSERT INTO exercises (id, name, description, photo, userId, typologyId, muscleGroupId, createdAt) VALUES(1, 'Curl con barra', 'Para ejecutarlo tomamos la barra, pegamos los codos a los costados de nuestro cuerpo y tiramos los codos hacia atrás y debemos subir el peso y bajarlo lentamente hasta estirar el brazo completamente.', 'ruta_de_la_foto', 1, 1, 1, ?)`,
       [new Date()]

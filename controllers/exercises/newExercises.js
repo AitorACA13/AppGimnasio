@@ -3,21 +3,22 @@ const { generateError, savePhoto } = require('../../helpers');
 const insertExerciseQuery = require('../../db/queries/exercises/insertExerciseQuery');
 const newExercises = async (req, res, next) => {
   try {
-    //Estamos comprobando que el body sea correcto.
+    //Destructuring del body del request.
     const { name, description, typologyId, muscleGroupId } = req.body;
+    //Si el admin no incluye alguno de los campos necesarios, lanzamos un error.
     if (!name || !description || !typologyId || !muscleGroupId) {
       generateError('Faltan campos para publicar el ejercicio.', 400);
     }
 
-    //Chequeamos req.files y creamos variable que almacena foto.
+    //Creamos una variable que almacenará la foto.
     let photo;
-
+    //Si hay una foto...
     if (req.files?.photo) {
-      //Guardamos la photo en el disco y obtenemos su nombre.
+      //...la guardamos y le asignamos un nombre con la función "savePhoto".
       photo = await savePhoto(req.files.photo, 500);
     }
 
-    //Insertamos el ejercicio y obtenemos los datos
+    //Insertamos el ejercicio y obtenemos los datos.
     const exercise = await insertExerciseQuery(
       name,
       description,

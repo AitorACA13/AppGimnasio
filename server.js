@@ -4,7 +4,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 
-// Creamos el servidor.
+//Creamos el servidor.
 const app = express();
 
 /**
@@ -13,13 +13,13 @@ const app = express();
  * #############################
  */
 
-// Middleware que deserializa un body en formato raw creando la propiedad body
+//Middleware que deserializa un body en formato raw creando la propiedad body.
 app.use(express.json());
 
-// Middleware que deserializa un body en formato form data creando la propiedad body y la propiedad files.
+//Middleware que deserializa un body en formato form data creando la propiedad body y la propiedad files.
 app.use(fileUpload());
 
-// Middleware que muestra información sobre la petición entrante
+//Middleware que muestra información sobre la petición entrante.
 app.use(morgan('dev'));
 
 //Middleware que evita problemas con cors cuando intentamos conectar el cliente con el servidor.
@@ -56,28 +56,28 @@ const {
   editUserAvatar,
 } = require('./controllers/users');
 
-// Registro de usuario pendiente de validar.
+//Registro de usuario pendiente de validar.
 app.post('/users', newUser);
 
 //Validar usuario con código de registro.
 app.put('/users/validate/:regCode', validateUser);
 
-// Login usuario >POST
+//Login del usuario.
 app.post('/users/login', loginUser);
 
-// Info usuario > GET
+//Mostrar información de un usuario según su id.
 app.get('/users/:userId', getUser);
 
-//Info usuario logueado que obtiene info de si mismo>GET
+//Permitir que un usuario logueado vea información sobre su propio usuario.
 app.get('/users', authUser, userExists, getOwnUser);
 
-// Enviar al usuario un email de recuperación de contraseña.
+//Enviar al usuario un email de recuperación de contraseña.
 app.put('/users/password/recover', sendRecoverPass);
 
-//Editar contraseña>PUT
+//Permitir que el usuario cambie su contraseña.
 app.put('/users/password', editUserPass);
 
-// Editar avatar de usuario.
+//Editar el avatar de usuario.
 app.put('/users/avatar', authUser, userExists, editUserAvatar);
 
 //Eliminar usuario.
@@ -102,17 +102,17 @@ const {
   userFavourites,
 } = require('./controllers/exercises');
 
-//Nuevo ejercicio
+//Nuevo ejercicio.
 app.post('/exercises', authUser, userExists, isAdmin, newExercises);
 //mejor singular.
 
-//Obtenemos información de un ejercicio en concreto.
+//Obtener información de un ejercicio en concreto.
 app.get('/exercises/:id', authUser, getExercise);
 
-// Modificamos el ejercicio
+//Modificar el ejercicio.
 app.put('/exercises/:id', authUser, isAdmin, exerciseExists, modifyExercise);
 
-//Eliminar ejercicio
+//Eliminar ejercicio.
 app.delete('/exercises/:id', authUser, isAdmin, exerciseExists, deleteExercise);
 
 //Listar y filtrar ejercicios.
@@ -124,10 +124,10 @@ app.get('/exercises', authUser, listExercises);
  * ##################################
  */
 
-//Add like
+//Añadir un like.
 app.post('/exercises/:id/likes', authUser, exerciseExists, addLike);
 
-//Eliminar Like
+//Eliminar un like.
 app.delete('/exercises/:id/likes', authUser, exerciseExists, deleteLike);
 
 /**
@@ -135,10 +135,10 @@ app.delete('/exercises/:id/likes', authUser, exerciseExists, deleteLike);
  * ## Middlewares Exercises-FAVOURITES- ##
  * #######################################
  */
-//Añadimos favoritos
+//Añadir favoritos.
 app.post('/exercises/:id/favourites', authUser, exerciseExists, addFavourite);
 
-//Eliminar favoritos
+//Eliminar favoritos.
 app.delete(
   '/exercises/:id/favourites',
   authUser,
@@ -146,7 +146,7 @@ app.delete(
   deleteFavourite
 );
 
-//Listamos favoritos de un usuario
+//Listar los favoritos de un usuario.
 app.get('/favourites/:id', authUser, userExists, userFavourites);
 
 /**
@@ -155,7 +155,7 @@ app.get('/favourites/:id', authUser, userExists, userFavourites);
  * ################################################
  */
 
-// Middleware de error.
+//Middleware de error.
 
 app.use((err, req, res, next) => {
   console.error(err);
@@ -166,7 +166,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Middleware de ruta no encontrada.
+//Middleware de ruta no encontrada.
 app.use((req, res) => {
   res.status(404).send({
     status: 'error',
@@ -174,7 +174,7 @@ app.use((req, res) => {
   });
 });
 
-// Ponemos el servidor a escuchar peticiones en un puerto dado.
+//Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at http://localhost:${process.env.PORT}`);
 });

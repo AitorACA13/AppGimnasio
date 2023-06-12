@@ -5,7 +5,7 @@ const updateUserRecoverPassQuery = async (email, recoverPassCode) => {
 
   try {
     connection = await getDB();
-
+    //Actualizamos los datos necesarios.
     await connection.query(
       `UPDATE users SET recoverPassCode = ?, modifiedAt = ? WHERE email = ?`,
       [recoverPassCode, new Date(), email]

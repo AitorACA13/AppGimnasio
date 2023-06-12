@@ -13,12 +13,12 @@ const updateUserRegCodeQuery = async (regCode) => {
       [regCode]
     );
 
-    // Si no hay usuarios con ese código de registro lanzamos un error.
+    //Si no hay usuarios con ese código de registro lanzamos un error.
     if (users.length < 1) {
       generateError('Código no encontrado', 404);
     }
 
-    //actualizamos el usuario.
+    //Actualizamos el usuario.
     await connection.query(
       `
       UPDATE users SET active=true, registrationCode=null, modifiedAt=? WHERE registrationCode=?`,

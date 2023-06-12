@@ -13,19 +13,19 @@ const sendRecoverPass = async (req, res, next) => {
       generateError('Faltan campos', 400);
     }
 
-    // Comprobamos que exista un usuario con ese email.
+    //Comprobamos que exista un usuario con ese email.
     await selectUserByEmailQuery(email);
 
-    // Generamos el código de recuperación de contraseña.
+    //Generamos el código de recuperación de contraseña.
     const recoverPassCode = randomstring.generate(8);
 
-    // Insertamos el código de recuperación en la base de datos.
+    //Insertamos el código de recuperación en la base de datos.
     await updateUserRecoverPassQuery(email, recoverPassCode);
 
-    // Creamos el asunto del email de recuperación de contraseña
+    //Creamos el asunto del email de recuperación de contraseña
     const emailSubject = 'Recuperación de contraseña Gymñam';
 
-    // Creamos el contenido del email.
+    //Creamos el contenido del email.
     const emailBody = `
             Se ha solicitado la recuperación de contraseña para este email en Gymñam. 
             
@@ -34,7 +34,7 @@ const sendRecoverPass = async (req, res, next) => {
             Si no has sido tú ignora este email.
         `;
 
-    // Enviamos el email de verificación.
+    //Enviamos el email de verificación.
     await sendMail(email, emailSubject, emailBody);
 
     res.send({

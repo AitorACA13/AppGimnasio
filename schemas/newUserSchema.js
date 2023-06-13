@@ -30,9 +30,7 @@ const newUserSchema = joi.object().keys({
     .string()
     .min(8)
     .max(100)
-    .regex(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!¡$%^&()_+|~=`{}:";'<>¿?,.]).{8,100}$/
-    )
+    .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()\-=_+{};':"|,.<>/?`~]).*$/)
     .error((errors) => {
       switch (errors[0].code) {
         case 'any.required':

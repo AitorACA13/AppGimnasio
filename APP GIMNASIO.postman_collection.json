@@ -7,643 +7,653 @@
 	},
 	"item": [
 		{
-			"name": "New User",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "USER",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Validate User",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8000/users/validate/a57d5972-2282-4074-bfe3-770d6dd71973",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"validate",
-						"a57d5972-2282-4074-bfe3-770d6dd71973"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login User",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/users/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Admin: Get User info",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
 					},
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
+					"response": []
+				},
+				{
+					"name": "Validate User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/validate/a57d5972-2282-4074-bfe3-770d6dd71973",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"validate",
+								"a57d5972-2282-4074-bfe3-770d6dd71973"
+							]
+						}
 					},
-					{
-						"key": "Authorization",
-						"value": "{{token_user_uri}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/users/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "User: Gets User Info",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_uri}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/users/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Avatar",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_uri}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Ryan",
-							"type": "text"
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "email",
-							"value": "ryanquinn23@live.co.uk",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "HackbOSs_9*",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"type": "file",
-							"src": "/Users/marina.hernandez/Downloads/detailslider_LeCol_SS23_mens_Pro_bibshorts2_Grey_2.jpg"
+						"url": {
+							"raw": "http://localhost:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8000/users/avatar",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"avatar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Exercise",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
 					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "PrubaPostman",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Probandoprobando1212",
-							"type": "text"
-						},
-						{
-							"key": "typologyId",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "muscleGroupId",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "photo",
-							"type": "file",
-							"src": []
-						}
-					]
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/exercises",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Exercise Info",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/exercises/6",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modify Exercise",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
+				{
+					"name": "Admin: Get User info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_user_uri}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"7"
+							]
+						}
 					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+					"response": []
+				},
+				{
+					"name": "User: Gets User Info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
 					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_uri}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"7"
+							]
+						}
 					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "sisi",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Mancuernas",
-							"type": "text"
-						},
-						{
-							"key": "typologyId",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "muscleGroupId",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "photo",
-							"type": "file",
-							"src": []
-						}
-					]
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/exercises/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Exercise",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "",
-							"type": "text"
+				{
+					"name": "Edit Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_uri}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Aitor",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aitor.delacueva13@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "HackbOSs_9*",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/marina.hernandez/Downloads/Bundles_Web_WigginsSport_womens_Mob.jpg"
+								}
+							]
 						},
-						{
-							"key": "description",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "typologyId",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "muscleGroupId",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "photo",
-							"type": "file",
-							"src": []
+						"url": {
+							"raw": "http://localhost:8000/users/avatar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"avatar"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/exercises/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "AddLike",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/exercises/1/likes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"1",
-						"likes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Like",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/exercises/1/likes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"1",
-						"likes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Favourite",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/exercises/3/favourites",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"3",
-						"favourites"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Favourite",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/exercises/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"exercises",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Password",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"email\": \"oriol.solanes.lopez@gmail.com\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Edit Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\": \"marinahdezhdez@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/password/recover",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"password",
+								"recover"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/users/password/recover",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"password",
-						"recover"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Password",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_normal}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"recoverPassCode\":\"rW5a6mMd\",\n    \"newPass\": \"adgsdjsh*9A_\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recoverPassCode\":\"xy8ZzjJf\",\n    \"newPass\": \"adgssjdg*Ajaf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"password"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8000/users/password",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"password"
-					]
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Delete user",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token_user_admin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/users/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users",
-						"5"
-					]
+			"name": "EXERCISES",
+			"item": [
+				{
+					"name": "New Exercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "PrubaPostman",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Probandoprobando1212",
+									"type": "text"
+								},
+								{
+									"key": "typologyId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "muscleGroupId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercise Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/exercises/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "typologyId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "muscleGroupId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/marina.hernandez/Downloads/curlBarra.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/exercises/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exercise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "typologyId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "muscleGroupId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/exercises/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/exercises/1/likes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Like",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/exercises/1/likes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Favourite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_normal}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/exercises/3/favourites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"3",
+								"favourites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Favourite",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user_admin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/exercises/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

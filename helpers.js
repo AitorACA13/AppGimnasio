@@ -6,7 +6,7 @@ const sharp = require('sharp');
 const { v4: uuid } = require('uuid');
 const { UPLOADS_DIR, SMTP_PASS, SMTP_USER } = process.env;
 const nodemailer = require('nodemailer');
-console.log(UPLOADS_DIR);
+
 /**
  * ####################
  * ## Generate Error ##
